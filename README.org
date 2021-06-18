@@ -1,0 +1,69 @@
+#+TITLE: Eidolon addon for RaccPack
+
+This mod allows you to create custom recipes for [[https://github.com/elucent/eidolon/][Eidolon]]'s crucible and worktable.
+
+Recipes are made in JSON format in directories:
+#+begin_example
+config
+└── eidolon-raccpack
+    ├── crucible
+    │   └── recipeName.json
+    └── worktable
+        └── recipeName.json
+#+end_example
+
+* JSON formats
+** Crucible recipe
+#+begin_src json
+{
+  "type": "eidolon:crucible",
+  "steps": [
+    {
+      "items": [
+        { "item": "eidolon:sulfur" }
+      ]
+    },
+    {
+      "stirs": 2,
+      "items": [
+        { "item": "minecraft:diamond" }, { "item": "minecraft:emerald" }
+      ]
+    },
+    {
+      "stirs": 3
+    }
+  ],
+  "result": {
+    "item": "minecraft:obsidian",
+    "count": 15
+  }
+}
+#+end_src
+In ~result~, the field ~count~ may be ommited, it defaults to ~1~.
+** Worktable recipe
+#+begin_src json
+{
+  "type": "eidolon:worktable",
+  "pattern": [
+    "abc",
+    "b b",
+    "aca"
+  ],
+  "reagents": "a b ",
+  "key": {
+    "a": {
+        "item": "minecraft:diamond"
+    },
+    "b": {
+        "item": "minecraft:emerald"
+    },
+    "c": {
+        "item": "minecraft:obsidian"
+    }
+  },
+  "result": {
+    "item": "minecraft:obsidian",
+    "count": 16
+  }
+}
+#+end_src
