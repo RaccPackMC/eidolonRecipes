@@ -39,7 +39,7 @@ config
   }
 }
 #+end_src
-In ~result~, the field ~count~ may be ommited, it defaults to ~1~.
+In ~result~, the field ~count~ may be omitted, it defaults to ~1~.
 ** Worktable recipe
 #+begin_src json
 {
