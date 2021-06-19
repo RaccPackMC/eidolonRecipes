@@ -14,6 +14,11 @@ public class CrucibleRecipeJson {
 
         @Nullable
         Integer stirs;
+
+        @Override
+        public int hashCode() {
+            return items.hashCode() + stirs.hashCode();
+        }
     }
 
     public String type;
@@ -39,6 +44,12 @@ public class CrucibleRecipeJson {
                 }
             }
         }
+        recipe.setRegistryName("eidolonraccpack", String.format("crucible%d", hashCode()));
         CrucibleRegistry.register(recipe);
+    }
+
+    @Override
+    public int hashCode() {
+        return type.hashCode() + steps.hashCode() + result.hashCode();
     }
 }

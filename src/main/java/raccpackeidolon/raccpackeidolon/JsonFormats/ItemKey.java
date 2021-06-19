@@ -15,8 +15,24 @@ class ItemKey implements IItemProvider {
 
   @Override
   public Item asItem() {
-    return ForgeRegistries.ITEMS.getValue(new ResourceLocation(item));
+    LOGGER.debug(String.format("Looking for item %s...", item));
+    Item result;
+    try {
+      result = ForgeRegistries.ITEMS.getValue(new ResourceLocation(item));
+      LOGGER.debug(String.format("Found %s!", item));
+    } catch (Exception e) {
+      result = null;
+      LOGGER.error(String.format("Couldn't find item %s! %s", item, e));
+    }
+    return result;
   }
 
-  public ItemStack asItemStack() { return new ItemStack(asItem(), count); }
+  public ItemStack asItemStack() {
+    return new ItemStack(asItem(), count);
+  }
+
+  @Override
+  public int hashCode() {
+    return item.hashCode() + count.hashCode();
+  }
 }

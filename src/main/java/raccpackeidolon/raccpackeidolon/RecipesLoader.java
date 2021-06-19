@@ -52,7 +52,7 @@ public class RecipesLoader {
     }
 
     public void loadCrucibleRecipe(File file) {
-        LOGGER.debug(String.format("Importing crucible recipe file %s", file.getAbsolutePath()));
+        LOGGER.info(String.format("Importing crucible recipe file %s", file.getAbsolutePath()));
         try {
             String jsonString = new String(Files.readAllBytes(file.toPath()));
             CrucibleRecipeJson recipe = gson.fromJson(jsonString, CrucibleRecipeJson.class);
@@ -63,7 +63,7 @@ public class RecipesLoader {
     }
 
     public void loadWorktableRecipe(File file) {
-        LOGGER.debug(String.format("Importing worktable recipe file %s", file.getAbsolutePath()));
+        LOGGER.info(String.format("Importing worktable recipe file %s", file.getAbsolutePath()));
         try {
             String jsonString = new String(Files.readAllBytes(file.toPath()));
             WorktableRecipeJson recipe = gson.fromJson(jsonString, WorktableRecipeJson.class);
